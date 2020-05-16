@@ -1,0 +1,58 @@
+<section class="campus" *ngFor="let item of [].constructor(3)">
+    <div class="campus__info">
+        <h3 class="campus__title">Tầng 1</h3>
+
+        <span class="campus__count">10/12</span>
+    </div>
+
+    <div class="table-list">
+        <app-table-item *ngFor="let item of [].constructor(8)"></app-table-item>
+    </div>
+</section>
+
+<aside class="statistic-today">
+    <table class="statistic-today__history">
+        <thead>
+            <tr>
+                <th>Mã hoá đơn</th>
+                <th>Thời gian</th>
+                <th>Thu ngân</th>
+                <th>Thanh toán</th>
+                <th>Loại TT</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let item of [].constructor(20)">
+                <td>0001</td>
+                <td>8:51</td>
+                <td>Huyền</td>
+                <td>81.000</td>
+                <td>Cash</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="statistic-today__logs">
+        <thead>
+            <tr>
+                <th>Thời gian</th>
+                <th>Hoạt động</th>
+                <th>Thu ngân</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr>
+                <td>9:51AM</td>
+                <td>Chuyển bàn</td>
+                <td>Chuyển bàn 7 sang bàn 8</td>
+            </tr>
+            <tr>
+                <td>10:44AM</td>
+                <td>Gộp</td>
+                <td>Gộp bàn 20 và 22</td>
+            </tr>
+        </tbody>
+    </table>
+</aside>
