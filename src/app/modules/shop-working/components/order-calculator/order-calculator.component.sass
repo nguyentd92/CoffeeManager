@@ -1,0 +1,29 @@
+:host
+    display: block
+    max-width: 200px
+    padding: .5rem
+
+.opers-container
+    display: flex
+    margin-top: .5rem
+
+.buttons-container
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    grid-gap: .4rem
+    margin-right: .5rem
+
+.right-buttons-container
+    display: grid
+    grid-template-columns: 1
+    grid-template-rows: repeat(4, 1fr)
+    grid-gap: .4rem
+    .equal
+        grid-column: 1
+        grid-row: span 2 / 5    
+
+        button
+            height: 100%
+
+nz-input-number
+    width: 100%
