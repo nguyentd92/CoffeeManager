@@ -14,6 +14,13 @@ const routes: Routes = [
             (m) => m.ShopWorkingModule
           ),
       },
+      {
+        path: 'system-manager',
+        loadChildren: () =>
+          import('./modules/system-manager/system-manager.module').then(
+            (m) => m.SystemManagerModule
+          ),
+      },
     ],
   },
 ];

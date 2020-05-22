@@ -1,1 +1,29 @@
-<p>food-note-gear works!</p>
+<!-- <nz-input-group [nzSize]="'default'" [nzAddOnAfter]="suffixIconButton">
+    <input type="text" nz-input [ngModel]="'26888888'" />
+</nz-input-group>
+
+<ng-template #suffixIconButton>
+    <button nz-button nzType="primary">Chọn</button>
+</ng-template> -->
+
+<nz-input-group nzSearch nzSize="default" [nzAddOnAfter]="suffixButton">
+    <input type="text" nz-input placeholder="Thêm chú thích" />
+</nz-input-group>
+<ng-template #suffixButton>
+    <button nz-button nzType="primary" nzSize="default" nzSearch>Chọn</button>
+</ng-template>
+
+<div class="note-gear-container">
+    <div><button nz-button nzType="default">Ít</button></div>
+    <div><button nz-button nzType="default">Nhiều</button></div>
+    <div><button nz-button nzType="default">Không</button></div>
+    <div><button nz-button nzType="default">Có</button></div>
+    <div><button nz-button nzType="default">Đá</button></div>
+    <div><button nz-button nzType="default">Sữa</button></div>
+    <div><button nz-button nzType="default">Đường</button></div>
+    <div><button nz-button nzType="default">Gừng</button></div>
+    <div><button nz-button nzType="default">Nóng</button></div>
+    <div><button nz-button nzType="default">Lạnh</button></div>
+    <div><button nz-button nzType="default">Ngọt</button></div>
+    <div><button nz-button nzType="default">Chua</button></div>
+</div>

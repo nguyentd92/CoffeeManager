@@ -2,8 +2,64 @@
     <app-food-item *ngFor="let item of [].constructor(8)"></app-food-item>
 </section>
 
-<div>
-    <section class="note-options">
-        <app-order-calculator></app-order-calculator>
-    </section>
+<div class="action-container">
+    <div class="group-container">
+        <h3 class="food-title"><i nz-icon nzType="star" nzTheme="outline"></i> Capuchino</h3>
+        <section class="note-options">
+            <app-food-note-gear></app-food-note-gear>
+            <app-order-calculator></app-order-calculator>
+        </section>
+
+        <section class="quantity-price-container">
+            <div>
+                <nz-input-group [nzAddOnBefore]="addOnBeforeUnitPrice">
+                    <input type="text" nz-input placeholder="Đơn giá" />
+                </nz-input-group>
+                <ng-template #addOnBeforeUnitPrice>
+                    <i nz-icon nzType="dollar-circle" nzTheme="outline"></i>
+                </ng-template>
+            </div>
+
+            <div>
+                <nz-input-group [nzAddOnBefore]="addOnBeforeDiscount" [nzAddOnAfter]="addOnAfterDiscount">
+                    <input type="text" nz-input placeholder="Giảm giá" />
+                </nz-input-group>
+                <ng-template #addOnBeforeDiscount>
+                    <i nz-icon nzType="minus-square" nzTheme="outline"></i>
+                </ng-template>
+                <ng-template #addOnAfterDiscount>
+                    <nz-select [ngModel]="'%'">
+                        <nz-option nzLabel="%" nzValue="%"></nz-option>
+                        <nz-option nzLabel="vnd" nzValue="đ"></nz-option>
+                    </nz-select>
+                </ng-template>
+            </div>
+
+            <label style-="flex-shrink: 0; min-width: 200px" nz-checkbox>Tặng</label>
+        </section>
+
+        <section class="decide-buttons-container">
+            <button nz-button nzSize="default" nzType="primary">
+                <i nz-icon nzType="plus" nzTheme="outline"></i>
+                Thêm vào danh sách
+            </button>
+        </section>
+    </div>
+
+
+    <div class="group-container">
+        <section class="order-preview-container">
+            <app-order-item></app-order-item>
+            <app-order-item></app-order-item>
+        </section>
+
+        <section class="decide-buttons-container">
+            <button nz-button nzSize="default" nzType="primary">
+                <i nz-icon nzType="check" nzTheme="outline"></i>
+                Hoàn tất
+            </button>
+            <button nz-button nzSize="default" nzType="default">
+                <i nz-icon nzType="delete" nzTheme="outline"></i>Bỏ qua</button>
+        </section>
+    </div>
 </div>

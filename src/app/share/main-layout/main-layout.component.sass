@@ -1,5 +1,5 @@
 @import '_colors'
-    
+
 header
     width: 100vw
     position: fixed
@@ -23,6 +23,11 @@ header
             li
                 display: inline-block
                 margin-left: 1rem
+
+                a
+                    color: $medium
+                    &.active
+                        color: $primary
 
 footer
     width: 100vw
