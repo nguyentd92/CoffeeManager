@@ -13,6 +13,7 @@ import vi from '@angular/common/locales/vi';
 import { MainLayoutModule } from './share/main-layout/main-layout.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { IconsProviderModule } from './share';
 
 registerLocaleData(vi);
 
@@ -26,6 +27,7 @@ registerLocaleData(vi);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    IconsProviderModule,
     MainLayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
