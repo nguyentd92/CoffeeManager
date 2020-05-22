@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { NzButtonModule, NzIconModule, NzTableModule } from 'ng-zorro-antd';
+import { NzButtonModule, NzIconModule, NzTableModule, NzModalModule } from 'ng-zorro-antd';
 
 @NgModule({
   exports: [
     NzButtonModule,
     NzIconModule,
-    NzTableModule
+    NzTableModule,
+    NzModalModule
   ]
 })
 export class CrudPackagesModule { }
