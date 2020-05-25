@@ -8,6 +8,7 @@ export interface UserInfo {
 
 export class BillEntity {
   _id?: string;
+  id?: string;
   table: number;
   startTime: Date; // Time Customers Check In
   phone: string;

@@ -70,6 +70,6 @@ export class DrinkCrudComponent implements OnInit {
   onQueryParamsChange(event) {}
 
   addQuery() {
-    this.billService.createOffline().subscribe((e) => console.log(e));
+    // this.billService.createOffline().subscribe((e) => console.log(e));
   }
 }

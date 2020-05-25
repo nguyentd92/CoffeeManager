@@ -98,14 +98,21 @@ export class billEffects {
     )
   );
 
-  deleteBillOffline$ = createEffect(() =>
-    this.actions$.pipe(
+  deleteBillOffline$ = createEffect(() => {
+    let id = null
+
+    return this.actions$.pipe(
       ofType(billActions.deleteBillOffline),
-      mergeMap(({data}) => this.billService.deleteOffline(data)),
-      map(({ _id }: any) => billActions.deleteBillOfflineSuccess({ _id })),
+      mergeMap(({ data }) => {
+        id = data._id
+        return this.billService.deleteOffline(data);
+      }),
+      map((data) => {
+        return billActions.deleteBillOfflineSuccess({ _id: id });
+      }),
       catchError((error) => of(billActions.deleteBillOfflineFailed({ error })))
-    )
-  );
+    );
+  });
 
   constructor(private actions$: Actions, private billService: BillService) {}
 }

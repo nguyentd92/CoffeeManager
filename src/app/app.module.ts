@@ -16,10 +16,11 @@ import { IconsProviderModule } from './share';
 import { HttpsInterceptor } from './core/utils/https.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, CoreModule } from './core';
 import { AppLocalDbModule } from './app-local-db.module';
+import { NzNotificationModule } from 'ng-zorro-antd';
+import { MomentModule } from 'ngx-moment';
 
 registerLocaleData(vi);
 
@@ -39,7 +40,12 @@ registerLocaleData(vi);
     AppLocalDbModule,
     StoreModule.forRoot(reducers, {}),
     CoreModule,
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    NzNotificationModule,
+    MomentModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   providers: [
     { provide: NZ_I18N, useValue: vi_VN },

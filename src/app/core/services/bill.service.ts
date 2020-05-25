@@ -7,27 +7,7 @@ import { BillEntity } from '..';
 import { ICrudOffline } from './common';
 import { BILL_TABLE_NAME } from './common/constants';
 import { tap } from 'rxjs/operators';
-
-const testBill: BillEntity = {
-  phone: '0935418749',
-  table: 20,
-  startTime: new Date(),
-  discountId: null,
-  discountValue: 0,
-  orderItems: [],
-  subTotal: 300000,
-  billDate: new Date(),
-  tax: 0,
-  customer: {
-    id: 'AB877231',
-    name: 'Ms Trang',
-  },
-  counter: {
-    id: 'NV231332',
-    name: 'Ms Huyền',
-  },
-  total: 300000,
-};
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +15,8 @@ const testBill: BillEntity = {
 export class BillService extends CrudService implements ICrudOffline {
   constructor(
     httpClient: HttpClient,
-    private indexDbService: NgxIndexedDBService
+    private indexDbService: NgxIndexedDBService,
+    private toastService: ToastService
   ) {
     super(
       {
@@ -45,7 +26,7 @@ export class BillService extends CrudService implements ICrudOffline {
     );
   }
 
-  createOffline(bill: BillEntity = testBill) {
+  createOffline(bill: BillEntity) {
     const record: BillEntity = { ...bill, isNotSynced: true };
     return from(this.indexDbService.add(BILL_TABLE_NAME, record));
   }
@@ -66,7 +47,18 @@ export class BillService extends CrudService implements ICrudOffline {
 
   deleteOffline(bill: BillEntity) {
     return from(
-      this.indexDbService.update(BILL_TABLE_NAME, {...bill, isDeleted: true, id: bill._id })
+      this.indexDbService.update(BILL_TABLE_NAME, {
+        ...bill,
+        isDeleted: true,
+        id: +bill._id,
+      })
+    ).pipe(
+      tap(() =>
+        this.toastService.success({
+          title: 'Xoá hơn đơn thành công',
+          content: `Hoá đơn ${bill._id} được tạo vào lúc ${bill.billDate} đã được xoá.`,
+        })
+      )
     );
   }
 }

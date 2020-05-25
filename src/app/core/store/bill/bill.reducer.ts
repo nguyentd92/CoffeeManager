@@ -85,7 +85,7 @@ export const billReducer = createReducer(
     status: BillStatus.LOADING,
   })),
   on(billActions.createBillOfflineSuccess, (state, { data }) =>
-    billAdapter.addOne(data, {
+    billAdapter.addOne({...data, id: data._id}, {
       ...state,
       status: BillStatus.IDLE,
     })
@@ -165,10 +165,13 @@ export const billReducer = createReducer(
     status: BillStatus.LOADING,
   })),
   on(billActions.deleteBillOfflineSuccess, (state, { _id }) =>
-    billAdapter.removeOne(_id, {
-      ...state,
-      status: BillStatus.IDLE,
-    })
+    {
+      console.log('id', _id)
+      return billAdapter.removeOne(_id, {
+        ...state,
+        status: BillStatus.IDLE,
+      });
+    }
   ),
   on(billActions.deleteBillOfflineFailed, (state, { error }) => ({
     ...state,

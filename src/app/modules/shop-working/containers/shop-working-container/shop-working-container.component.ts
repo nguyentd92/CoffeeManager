@@ -1,8 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { BillState, BillEntity } from 'src/app/core';
 import { Store, select } from '@ngrx/store';
-import * as fromBillStore from 'src/app/core/store/bill'
+import * as fromBillStore from 'src/app/core/store/bill';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd';
+
+const testBill: BillEntity = {
+  phone: '0935418749',
+  table: 20,
+  startTime: new Date(),
+  discountId: null,
+  discountValue: 0,
+  orderItems: [],
+  subTotal: 300000,
+  billDate: new Date(),
+  tax: 0,
+  customer: {
+    id: 'AB877231',
+    name: 'Ms Trang',
+  },
+  counter: {
+    id: 'NV231332',
+    name: 'Ms Huyền',
+  },
+  total: 300000,
+};
 
 @Component({
   selector: 'app-shop-working-container',
@@ -47,7 +68,14 @@ export class ShopWorkingContainerComponent implements OnInit {
       nzTitle: 'Bạn có chắc chắn muốn xoá?',
       nzContent:
         'When clicked the OK button, this dialog will be closed after 1 second',
-      nzOnOk: () => this.billStore.dispatch(fromBillStore.deleteBillOffline({_id: bill._id}))
+      nzOnOk: () =>
+        this.billStore.dispatch(
+          fromBillStore.deleteBillOffline({ data: bill })
+        ),
     });
+  }
+
+  addBill() {
+    this.billStore.dispatch(fromBillStore.createBillOffline(testBill));
   }
 }
