@@ -1,12 +1,20 @@
 import { BillEntity } from '../../entities';
+import { EntityState } from '@ngrx/entity';
 
 export type BillSort = 'asc' | 'desc' | null;
-export type BillStatus = 'idle' | 'loading' | 'error';
+export enum BillStatus {
+  IDLE = 'idle',
+  LOADING = 'loading',
+  ERROR = 'error'
+}
 
-export interface DrinkState {
-  items: BillEntity[];
-  currentItem: BillEntity;
-  status: BillStatus;
+export interface BillState extends EntityState<BillEntity> {
+  ids: string[],
+  entities: {
+    [id: string]: BillEntity
+  }
+  currentEntity: BillEntity;
+  status: BillStatus; 
   error?: string;
   sort: BillSort;
 }

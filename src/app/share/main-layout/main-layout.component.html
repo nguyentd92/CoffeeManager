@@ -22,7 +22,9 @@
     <div class="system-info">
         <span><i class="fas fa-globe"></i> IP: 192.168.1.13</span>
 
-        <span><i class="fas fa-server"></i> Kết nối mạng: hoạt động</span>
+        <span [style.color]="(connection$ | async) ? '' : 'red'"><i class="fas fa-server">
+            </i> Kết nối mạng: {{ (connection$ | async) ? 'Hoạt động' : 'Mất kết nối'}}
+        </span>
         <span><img src="assets/images/printer.svg" /> Máy in: Inson</span>
         <span><i class="fas fa-cash-register"></i> Tài khoản: Vi Thị Tú</span>
     </div>

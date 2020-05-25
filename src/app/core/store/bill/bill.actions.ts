@@ -155,7 +155,7 @@ export const sortingBills = createAction(
   props<{ sort: BillSort }>()
 );
 
-export type DrinkActions =
+export type BillActions =
   | ActionType<typeof getBills>
   | ActionType<typeof getBillsSuccess>
   | ActionType<typeof getBillsFailed>
@@ -177,4 +177,7 @@ export type DrinkActions =
   | ActionType<typeof deleteBillOnline>
   | ActionType<typeof deleteBillOnlineSuccess>
   | ActionType<typeof deleteBillOnlineFailed>
+  | ActionType<typeof deleteBillOffline>
+  | ActionType<typeof deleteBillOfflineSuccess>
+  | ActionType<typeof deleteBillOfflineFailed>
   | ActionType<typeof sortingBills>;

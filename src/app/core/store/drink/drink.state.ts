@@ -1,11 +1,19 @@
 import { DrinkEntity } from '../../entities';
+import { EntityState } from '@ngrx/entity';
 
 export type DrinkSort = 'asc' | 'desc' | null;
-export type DrinkStatus = 'idle' | 'loading' | 'error';
+export enum DrinkStatus {
+  IDLE = 'idle',
+  LOADING = 'loading',
+  ERROR = 'error'
+}
 
-export interface DrinkState {
-  items: DrinkEntity[];
-  currentItem: DrinkEntity;
+export interface DrinkState extends EntityState<DrinkEntity> {
+  ids: string[]
+  entities: {
+    [id: string]: DrinkEntity
+  };
+  currentEntity: DrinkEntity;
   status: DrinkStatus;
   error?: string;
   sort: DrinkSort;

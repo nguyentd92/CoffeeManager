@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterInfo } from 'src/app/core';
+import { RouterInfo, AppState, selectConnection } from 'src/app/core';
+import { Store, select } from '@ngrx/store';
+import { tap } from 'rxjs/operators';
 
 const MAIN_ROUTES: RouterInfo[] = [
   {
@@ -36,7 +38,11 @@ const MAIN_ROUTES: RouterInfo[] = [
 export class MainLayoutComponent implements OnInit {
   routes = MAIN_ROUTES;
 
-  constructor() {}
+  constructor(private appStore: Store<AppState>) {}
 
   ngOnInit(): void {}
+
+  get connection$() {
+    return this.appStore.pipe(select(selectConnection), tap(e => console.log(e)));
+  }
 }

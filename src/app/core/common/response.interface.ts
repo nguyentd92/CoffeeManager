@@ -1,3 +1,3 @@
 export interface IResponse {
-    data: any
+  data: any;
 }

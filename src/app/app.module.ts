@@ -17,6 +17,8 @@ import { HttpsInterceptor } from './core/utils/https.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers } from './core';
 
 registerLocaleData(vi);
 
@@ -33,8 +35,9 @@ registerLocaleData(vi);
       enabled: environment.production,
     }),
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
     { provide: NZ_I18N, useValue: vi_VN },

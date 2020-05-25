@@ -1,97 +1,104 @@
 import { createReducer, on } from '@ngrx/store';
-import * as drinkActions from './drink.actions'
-import { DrinkState } from './drink.state';
-const initialState: DrinkState = {
-  items: [],
-  currentItem: null,
-  status: 'idle',
+import { createEntityAdapter } from '@ngrx/entity';
+
+import * as drinkActions from './drink.actions';
+import { DrinkState, DrinkStatus } from './drink.state';
+import { DrinkEntity } from '../..';
+
+const drinkAdapter = createEntityAdapter<DrinkEntity>();
+
+const initialState: DrinkState = drinkAdapter.getInitialState({
+  ids: [],
+  entities: {},
+  currentEntity: null,
+  status: DrinkStatus.IDLE, 
   error: '',
   sort: null,
-};
+});
 
-export const todoReducer = createReducer(
+export const drinkReducer = createReducer(
   initialState,
 
   // GetAll Actions
 
-  on(drinkActions.getDrinks, (state) => ({ ...state, status: 'loading' })),
-  on(drinkActions.getDrinksSuccess, (state, { data }) => ({
-    ...state,
-    items: data,
-  })),
+  on(drinkActions.getDrinks, (state) => ({ ...state, status: DrinkStatus.LOADING })),
+  on(drinkActions.getDrinksSuccess, (state, { data }) => {
+    return drinkAdapter.addAll(data, { ...state, status: DrinkStatus.IDLE });
+  }),
   on(drinkActions.getDrinksFailed, (state, { error }) => ({
     ...state,
     error: error.message,
-    status: 'error',
+    status: DrinkStatus.ERROR,
   })),
 
   // Get Actions
 
-  on(drinkActions.getDrink, (state) => ({ ...state, status: 'loading' })),
-  on(drinkActions.getDrinkSuccess, (state, { data }) => ({
-    ...state,
-    currentItem: data,
-    status: 'idle',
-  })),
+  on(drinkActions.getDrink, (state) => ({ ...state, status: DrinkStatus.LOADING })),
+  on(
+    drinkActions.getDrinkSuccess,
+    (state, { data }): DrinkState => ({
+      ...state,
+      currentEntity: data as DrinkEntity,
+      status: DrinkStatus.IDLE,
+    })
+  ),
   on(drinkActions.getDrinkFailed, (state, { error }) => ({
     ...state,
-    status: 'error',
+    status: DrinkStatus.ERROR,
     error: error.message,
   })),
 
   //   Creating Actions
 
-  on(drinkActions.createDrink, (state) => ({ ...state, status: 'loading' })),
-  on(drinkActions.createDrinkSuccess, (state, { data }) => ({
-    ...state,
-    items: [...state.items, data],
-    status: 'idle',
-  })),
+  on(drinkActions.createDrink, (state) => ({ ...state, status: DrinkStatus.LOADING })),
+  on(drinkActions.createDrinkSuccess, (state, { data }) =>
+    drinkAdapter.addOne(data, { ...state, loading: DrinkStatus.IDLE })
+  ),
   on(drinkActions.createDrinkFailed, (state, { error }) => ({
     ...state,
-    status: 'error',
+    status: DrinkStatus.ERROR,
     error: error.message,
   })),
 
   // Updating Actions
 
-  on(drinkActions.updateDrink, (state) => ({ ...state, status: 'loading' })),
-  on(drinkActions.updateDrinkSuccess, (state, { data }) => {
-    const items = [...state.items];
-
-    items[data._id] = data;
-
-    return {
-      ...state,
-      items,
-      status: 'idle',
-    };
-  }),
+  on(drinkActions.updateDrink, (state) => ({ ...state, status: DrinkStatus.LOADING })),
+  on(drinkActions.updateDrinkSuccess, (state, { data }) =>
+    drinkAdapter.updateOne(
+      {
+        id: data._id,
+        changes: data,
+      },
+      { ...state, status: DrinkStatus.IDLE }
+    )
+  ),
   on(drinkActions.updateDrinkFailed, (state, { error }) => ({
     ...state,
-    status: 'error',
+    status: DrinkStatus.ERROR,
     error: error.message,
   })),
 
   //   Deleting Actions
 
-  on(drinkActions.deleteDrink, (state) => ({ ...state, status: 'loading' })),
-  on(drinkActions.deleteDrinkSuccess, (state, { _id }) => {
-    const items = [...state.items];
-
-    const index = items.findIndex((todo) => todo._id == _id);
-
-    items.splice(index, 1);
-
-    return {
-      ...state,
-      items,
-      status: 'idle',
-    };
-  }),
+  on(drinkActions.deleteDrink, (state) => ({ ...state, status: DrinkStatus.LOADING })),
+  on(drinkActions.deleteDrinkSuccess, (state, { _id }) =>
+    drinkAdapter.removeOne(_id, { ...state, status: DrinkStatus.IDLE })
+  ),
   on(drinkActions.deleteDrinkFailed, (state, { error }) => ({
     ...state,
-    status: 'error',
+    status: DrinkStatus.ERROR,
     error: error.message,
   }))
 );
+
+const {
+  selectIds,
+  selectAll,
+  selectEntities,
+  selectTotal,
+} = drinkAdapter.getSelectors();
+
+export const selectDrinkIds = selectIds;
+export const selectDrinkAll = selectAll;
+export const selectDrinkEntity = selectEntities;
+export const selectDrinkTotal = selectTotal;

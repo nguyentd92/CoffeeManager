@@ -20,4 +20,6 @@ export class BillService extends CrudService implements ICreateOffline {
   createOffline() {
     return of([1, 2, 3]);
   }
+
+  
 }
