@@ -71,7 +71,8 @@
 </div>
 
 <aside class="statistic-today">
-    <button nz-button nzType="primary" nzSize="default" nzShape="circle" (click)="addBill()"><i nz-icon nzType="download"></i></button>
+    <button nz-button nzType="primary" nzSize="default" nzShape="circle" (click)="addBill()"><i nz-icon
+            nzType="download"></i></button>
     <table class="statistic-today__history">
         <thead>
             <tr>
@@ -87,7 +88,7 @@
             <tr nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" (contextmenu)="onRightClick($event)"
                 [ngClass]="{ 'not-sync': bill.isNotSynced }" *ngFor="let bill of bills$ | async">
                 <td>{{ bill._id }}</td>
-                <td>{{ bill.billDate | date }}</td>
+                <td>{{ bill.billDate | amLocale: 'vi' | amDateFormat: 'hh:mm' }}</td>
                 <td>{{ bill.counter.name }}</td>
                 <td>{{ bill.total }}</td>
                 <td>Cash</td>
@@ -97,7 +98,8 @@
                         <li nz-menu-item><i nz-icon nzType="printer" nzTheme="outline"></i>In hoá đơn</li>
                         <li nz-menu-divider></li>
                         <li nz-menu-item><i nz-icon nzType="edit" nzTheme="outline"></i>Sửa hoá đơn</li>
-                        <li nz-menu-item (click)="showConfirm(bill)"><i nz-icon nzType="delete" nzTheme="outline"></i>Xoá hoá đơn</li>
+                        <li nz-menu-item (click)="showConfirm(bill)"><i nz-icon nzType="delete"
+                                nzTheme="outline"></i>Xoá hoá đơn</li>
                     </ul>
                 </nz-dropdown-menu>
             </tr>

@@ -55,10 +55,14 @@ export class BillService extends CrudService implements ICrudOffline {
     ).pipe(
       tap(() =>
         this.toastService.success({
-          title: 'Xoá hơn đơn thành công',
-          content: `Hoá đơn ${bill._id} được tạo vào lúc ${bill.billDate} đã được xoá.`,
+          title: 'Xoá hoá đơn thành công',
+          content: `Đã xoá hoá đơn số ${bill._id}, được tạo vào lúc ${bill.billDate}`,
         })
       )
     );
+  }
+
+  syncDataToServer(data: BillEntity) {
+    
   }
 }

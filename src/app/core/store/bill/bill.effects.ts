@@ -8,7 +8,7 @@ import { BillEntity } from '../..';
 import { BillService } from '../../services/bill.service';
 
 @Injectable()
-export class billEffects {
+export class BillEffects {
   @Effect() loadBills$ = createEffect(() =>
     this.actions$.pipe(
       ofType(billActions.getBills),
@@ -61,7 +61,7 @@ export class billEffects {
         return this.billService.createOffline(bill);
       }),
       map((index) =>
-        billActions.createBillOfflineSuccess({ data: { ...data, _id: index } })
+        billActions.createBillOfflineSuccess({ data: { ...data, _id: index, isNotSynced: true } })
       ),
       catchError((error) => of(billActions.createBillOfflineFailed({ error })))
     );

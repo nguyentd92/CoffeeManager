@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterInfo, AppState, selectConnection } from 'src/app/core';
 import { Store, select } from '@ngrx/store';
+import { interval, Subscription } from 'rxjs';
 
 const MAIN_ROUTES: RouterInfo[] = [
   {
@@ -36,10 +37,15 @@ const MAIN_ROUTES: RouterInfo[] = [
 })
 export class MainLayoutComponent implements OnInit {
   routes = MAIN_ROUTES;
+  currentTime = new Date();
+  timeSubs: Subscription;
 
-  constructor(private appStore: Store<AppState>) {}
+  constructor(private appStore: Store<AppState>) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    interval(60000).subscribe(() => this.currentTime = new Date())
+  }
 
   get connection$() {
     return this.appStore.pipe(select(selectConnection));

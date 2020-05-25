@@ -21,6 +21,7 @@ import { reducers, CoreModule } from './core';
 import { AppLocalDbModule } from './app-local-db.module';
 import { NzNotificationModule } from 'ng-zorro-antd';
 import { MomentModule } from 'ngx-moment';
+import 'moment/locale/vi';
 
 registerLocaleData(vi);
 
@@ -41,7 +42,7 @@ registerLocaleData(vi);
     StoreModule.forRoot(reducers, {}),
     CoreModule,
     NzNotificationModule,
-    MomentModule,
+    MomentModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

@@ -1,7 +1,7 @@
 import { ActionReducerMap } from '@ngrx/store';
 import { AppState } from './app-state';
-import { drinkReducer, DrinkState, drinkEffects } from './drink';
-import { billReducer, BillState, billEffects } from './bill';
+import { drinkReducer, DrinkState, DrinkEffects } from './drink';
+import { billReducer, BillState, BillEffects } from './bill';
 import { appStateReducer } from './app-state';
 
 export * from './drink';
@@ -21,6 +21,6 @@ export const reducers: ActionReducerMap<State> = {
 };
 
 export const effects = [
-  drinkEffects,
-  billEffects
+  DrinkEffects,
+  BillEffects
 ]

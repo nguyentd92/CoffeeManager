@@ -20,6 +20,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { OrderItemComponent } from './components/order-item/order-item.component';
 import { NzMenuModule, NzDropDownModule, NzModalModule } from 'ng-zorro-antd';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NzMenuModule, NzDropDownModule, NzModalModule } from 'ng-zorro-antd';
     NzTagModule,
     NzMenuModule,
     NzDropDownModule,
-    NzModalModule
+    NzModalModule,
+    MomentModule
   ],
 })
 export class ShopWorkingModule {}

@@ -8,7 +8,7 @@ import { DrinkService } from '../../services';
 import { DrinkEntity } from '../..';
 
 @Injectable()
-export class drinkEffects {
+export class DrinkEffects {
   @Effect() loadDrinks$ = createEffect(() =>
     this.actions$.pipe(
       ofType(drinkActions.getDrinks),

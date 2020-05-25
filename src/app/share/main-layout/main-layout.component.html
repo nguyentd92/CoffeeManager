@@ -30,6 +30,6 @@
     </div>
 
     <div>
-        <span><i class="far fa-clock"></i> 7:00AM 12/05/2020</span>
+        <span><i class="far fa-clock"></i> {{ currentTime | amLocale: 'vi' | amDateFormat:'h:mm a, DD MMMM YYYY' }}</span>
     </div>
 </footer>

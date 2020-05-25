@@ -67,7 +67,7 @@ export class ShopWorkingContainerComponent implements OnInit {
     this.confirmModal = this.modal.confirm({
       nzTitle: 'Bạn có chắc chắn muốn xoá?',
       nzContent:
-        'When clicked the OK button, this dialog will be closed after 1 second',
+        `Xoá hoá đơn số ${bill._id}, được tạo vào lúc ${bill.startTime}`,
       nzOnOk: () =>
         this.billStore.dispatch(
           fromBillStore.deleteBillOffline({ data: bill })
