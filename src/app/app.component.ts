@@ -14,7 +14,7 @@ export class AppComponent {
 
   constructor(
     private connectionService: ConnectionService,
-    private appStore: Store<AppState>
+    private appStore: Store<AppState>,
   ) {
     this.connectionService
       .monitor()

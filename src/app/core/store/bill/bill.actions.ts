@@ -21,6 +21,10 @@ export const GET_BILLS = '@Bill/GetBills';
 export const GET_BILLS_SUCCESS = '@Bill/GetBillsSuccess';
 export const GET_BILLS_FAILED = '@Bill/GetBillsFailed';
 
+export const GET_BILLS_OFFLINE = '@Bill/GetBillsOffline';
+export const GET_BILLS_OFFLINE_SUCCESS = '@Bill/GetBillsOfflineSuccess';
+export const GET_BILLS_OFFLINE_FAILED = '@Bill/GetBillsOfflineFailed';
+
 export const GET_BILL = '@Bill/GetBill';
 export const GET_BILL_SUCCESS = '@Bill/GetBillSuccess';
 export const GET_BILL_FAILED = '@Bill/GetBillFailed';
@@ -51,6 +55,17 @@ export const getBillsSuccess = createAction(
 );
 export const getBillsFailed = createAction(
   GET_BILLS_FAILED,
+  props<{ error: GetAllError }>()
+);
+
+// Get List of Bill Offline
+export const getBillsOffline = createAction(GET_BILLS_OFFLINE);
+export const getBillsOfflineSuccess = createAction(
+  GET_BILLS_OFFLINE_SUCCESS,
+  props<{ data: BillEntity[] }>()
+);
+export const getBillsOfflineFailed = createAction(
+  GET_BILLS_OFFLINE_FAILED,
   props<{ error: GetAllError }>()
 );
 
@@ -139,14 +154,14 @@ export const deleteBillOnlineFailed = createAction(
 // Delete Bill Offline
 export const deleteBillOffline = createAction(
   DELETE_BILL_OFFLINE,
-  props<{ _id: string }>()
+  props<{ data: BillEntity }>()
 );
 export const deleteBillOfflineSuccess = createAction(
-  DELETE_BILL_ONLINE_SUCCESS,
+  DELETE_BILL_OFFLINE_SUCCESS,
   props<{ _id: string }>()
 );
 export const deleteBillOfflineFailed = createAction(
-  DELETE_BILL_ONLINE_FAILED,
+  DELETE_BILL_OFFLINE_FAILED,
   props<{ error: DeleteError }>()
 );
 
@@ -159,6 +174,9 @@ export type BillActions =
   | ActionType<typeof getBills>
   | ActionType<typeof getBillsSuccess>
   | ActionType<typeof getBillsFailed>
+  | ActionType<typeof getBillsOffline>
+  | ActionType<typeof getBillsOfflineSuccess>
+  | ActionType<typeof getBillsOfflineFailed>
   | ActionType<typeof getBill>
   | ActionType<typeof getBillsSuccess>
   | ActionType<typeof getBillFailed>
@@ -181,3 +199,4 @@ export type BillActions =
   | ActionType<typeof deleteBillOfflineSuccess>
   | ActionType<typeof deleteBillOfflineFailed>
   | ActionType<typeof sortingBills>;
+

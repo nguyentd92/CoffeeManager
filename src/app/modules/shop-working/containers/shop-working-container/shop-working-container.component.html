@@ -83,12 +83,22 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let item of [].constructor(20)">
-                <td>0001</td>
-                <td>8:51</td>
-                <td>Huyền</td>
-                <td>81.000</td>
+            <tr nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" (contextmenu)="onRightClick($event)"
+                [ngClass]="{ 'not-sync': bill.isNotSynced }" *ngFor="let bill of bills$ | async">
+                <td>{{ bill._id }}</td>
+                <td>{{ bill.billDate | date }}</td>
+                <td>{{ bill.counter.name }}</td>
+                <td>{{ bill.total }}</td>
                 <td>Cash</td>
+
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                    <ul nz-menu>
+                        <li nz-menu-item><i nz-icon nzType="printer" nzTheme="outline"></i>In hoá đơn</li>
+                        <li nz-menu-divider></li>
+                        <li nz-menu-item><i nz-icon nzType="edit" nzTheme="outline"></i>Sửa hoá đơn</li>
+                        <li nz-menu-item (click)="showConfirm(bill)"><i nz-icon nzType="delete" nzTheme="outline"></i>Xoá hoá đơn</li>
+                    </ul>
+                </nz-dropdown-menu>
             </tr>
         </tbody>
     </table>

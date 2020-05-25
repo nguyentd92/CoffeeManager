@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DrinkEntity, DrinkService } from 'src/app/core';
 import { DrinkCreateComponent } from './drink-create/drink-create.component';
 import { NzModalService } from 'ng-zorro-antd';
+import { BillService } from 'src/app/core/services/bill.service';
 
 @Component({
   selector: 'app-drink-crud',
@@ -19,14 +20,19 @@ export class DrinkCrudComponent implements OnInit {
     { text: 'female', value: 'female' },
   ];
 
-  constructor(private modal: NzModalService, private drinkService: DrinkService) {}
+  constructor(
+    private billService: BillService,
+    private modal: NzModalService,
+    private drinkService: DrinkService
+  ) {}
 
-  ngOnInit(
-    
-  ): void {
-    this.drinkService.getAll().subscribe(
-      (res: any) => this.listOfRandomUser = res
-    )
+  ngOnInit(): void {
+    this.drinkService
+      .getAll()
+      .subscribe((res: any) => (this.listOfRandomUser = res));
+
+    // For Demo
+    this.billService.getAllOffline().subscribe(e => console.log(e))
   }
 
   createComponentModal(): void {
@@ -61,7 +67,9 @@ export class DrinkCrudComponent implements OnInit {
     }, 2000);
   }
 
-  onQueryParamsChange(event) {
-    
+  onQueryParamsChange(event) {}
+
+  addQuery() {
+    this.billService.createOffline().subscribe((e) => console.log(e));
   }
 }

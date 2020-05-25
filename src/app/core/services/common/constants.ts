@@ -1,0 +1,1 @@
+export const BILL_TABLE_NAME = 'OfflineBills'

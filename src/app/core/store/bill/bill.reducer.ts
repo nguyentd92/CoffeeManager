@@ -32,6 +32,20 @@ export const billReducer = createReducer(
     status: BillStatus.ERROR,
   })),
 
+  //   Get All Actions Offline
+  on(billActions.getBillsOffline, (state) => ({
+    ...state,
+    status: BillStatus.LOADING,
+  })),
+  on(billActions.getBillsOfflineSuccess, (state, { data }) =>
+    billAdapter.addAll(data, { ...state, status: BillStatus.IDLE })
+  ),
+  on(billActions.getBillsOfflineFailed, (state, { error }) => ({
+    ...state,
+    error: error.message,
+    status: BillStatus.ERROR,
+  })),
+
   // Get Single
   on(billActions.getBill, (state) => ({
     ...state,

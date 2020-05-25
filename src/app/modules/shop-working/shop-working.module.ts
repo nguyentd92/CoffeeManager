@@ -19,6 +19,7 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { OrderItemComponent } from './components/order-item/order-item.component';
+import { NzMenuModule, NzDropDownModule, NzModalModule } from 'ng-zorro-antd';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,10 @@ import { OrderItemComponent } from './components/order-item/order-item.component
     NzIconModule,
     NzCheckboxModule,
     NzSelectModule,
-    NzTagModule
+    NzTagModule,
+    NzMenuModule,
+    NzDropDownModule,
+    NzModalModule
   ],
 })
 export class ShopWorkingModule {}

@@ -7,7 +7,10 @@ export interface UserInfo {
 }
 
 export class BillEntity {
-  _id: string;
+  _id?: string;
+  table: number;
+  startTime: Date; // Time Customers Check In
+  phone: string;
   discountId: string;
   discountValue: number;
   orderItems: OrderItem[];
@@ -16,6 +19,7 @@ export class BillEntity {
   total: number;
   customer: UserInfo;
   counter: UserInfo;
-  billDate: Date;
-  isNotSynced: boolean
+  billDate: Date; // Time Customers Check Out
+  isNotSynced?: boolean;
+  isDeleted?: boolean;
 }

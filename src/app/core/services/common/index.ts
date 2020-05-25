@@ -1,1 +1,2 @@
-export * from './create-offline.interface';
+export * from './crud-offline.interface';
+export * from './constants';
