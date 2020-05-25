@@ -1,1 +1,1 @@
-export const Common = null;
+export * from './response.interface';

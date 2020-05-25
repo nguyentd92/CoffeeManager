@@ -4,16 +4,16 @@
     [nzTotal]="total" [nzPageSize]="pageSize" [nzPageIndex]="pageIndex" (nzQueryParams)="onQueryParamsChange($event)">
     <thead>
         <tr>
-            <th nzColumnKey="name" [nzSortFn]="true">Name</th>
-            <th nzColumnKey="gender" [nzFilters]="filterGender" [nzFilterFn]="true">Gender</th>
-            <th nzColumnKey="email" [nzSortFn]="true">Email</th>
+            <th nzColumnKey="name" [nzSortFn]="true">Thức uống</th>
+            <th nzColumnKey="code" [nzFilters]="filterGender" [nzFilterFn]="true">Mã</th>
+            <th nzColumnKey="price" [nzSortFn]="true">Giá</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let data of listOfRandomUser">
             <td>{{ data.name }}</td>
-            <td>{{ data.shortName }}</td>
             <td>{{ data.code }}</td>
+            <td>{{ data.sizePrices.M }}</td>
         </tr>
     </tbody>
 </nz-table>

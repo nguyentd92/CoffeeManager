@@ -1,33 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DrinkEntity } from 'src/app/core';
+import { DrinkEntity, DrinkService } from 'src/app/core';
 import { DrinkCreateComponent } from './drink-create/drink-create.component';
 import { NzModalService } from 'ng-zorro-antd';
-
-const mockEntities: DrinkEntity[] = [
-  {
-    _id: '1',
-    code: 'CP-1',
-    name: 'Capuchino Cafe',
-    shortName: 'Capuchino',
-    sizePrices: [
-      {
-        sizeName: 'Small',
-        sizeShortName: 'S',
-        price: 30000,
-      },
-      {
-        sizeName: 'Medium',
-        sizeShortName: 'M',
-        price: 46000,
-      },
-      {
-        sizeName: 'Large',
-        sizeShortName: 'L',
-        price: 58000,
-      },
-    ],
-  },
-];
 
 @Component({
   selector: 'app-drink-crud',
@@ -36,7 +10,7 @@ const mockEntities: DrinkEntity[] = [
 })
 export class DrinkCrudComponent implements OnInit {
   total = 1;
-  listOfRandomUser: DrinkEntity[] = mockEntities;
+  listOfRandomUser: DrinkEntity[] = [];
   loading = false;
   pageSize = 10;
   pageIndex = 1;
@@ -45,9 +19,15 @@ export class DrinkCrudComponent implements OnInit {
     { text: 'female', value: 'female' },
   ];
 
-  constructor(private modal: NzModalService) {}
+  constructor(private modal: NzModalService, private drinkService: DrinkService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(
+    
+  ): void {
+    this.drinkService.getAll().subscribe(
+      (res: any) => this.listOfRandomUser = res
+    )
+  }
 
   createComponentModal(): void {
     const modal = this.modal.create({

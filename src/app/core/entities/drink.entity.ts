@@ -5,11 +5,9 @@ export class DrinkEntity {
   shortName?: string;
   imgCoverUrl?: string;
   imgUrls?: string[];
-  sizePrices: DrinkSizePrice[];
+  sizePrices: DrinkSizePrice;
 }
 
 export interface DrinkSizePrice {
-  sizeName: string;
-  sizeShortName: string;
-  price: number;
+  [sizeName: string]: number
 }

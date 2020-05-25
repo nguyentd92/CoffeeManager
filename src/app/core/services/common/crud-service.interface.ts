@@ -1,9 +1,10 @@
 import { Observable } from 'rxjs';
+import { IResponse } from '../../common/response.interface';
 
 export interface ICrudService {
-  getAll(): Observable<any>;
-  get(id: string): Observable<any>;
-  create(entity: any): Observable<any>;
-  update(id: string, entity: any): Observable<any>;
-  delete(id: string): Observable<any>;
+  getAll(): Observable<IResponse>;
+  get(id: string): Observable<IResponse>;
+  create(entity: any): Observable<IResponse>;
+  update(id: string, entity: any): Observable<IResponse>;
+  delete(id: string): Observable<IResponse>;
 }

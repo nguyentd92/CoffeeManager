@@ -1,1 +1,1 @@
-export const Store = null;
+export * from './drink';

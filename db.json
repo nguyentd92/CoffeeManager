@@ -1,4 +1,147 @@
 {
-    "drinks": [
-    ]
+  "drinks": [
+    {
+      "_id": "2c01b9f6-03ca-4427-a047-2d8af1539799",
+      "code": "Capuchino",
+      "name": "Capuchino",
+      "sizePrices": {
+        "S": 33000,
+        "M": 42000,
+        "L": 54000
+      },
+      "id": 1
+    },
+    {
+      "_id": "2c01b9f6-03ca-4427-a047-2d8af1539799",
+      "code": "Capuchino",
+      "name": "Capuchino",
+      "sizePrices": {
+        "S": 33000,
+        "M": 42000,
+        "L": 54000
+      },
+      "id": 2
+    },
+    {
+      "_id": "8670904c-cbdf-4c34-8c08-086424d89a91",
+      "code": "Capuchino",
+      "name": "CAPCF",
+      "sizePrices": {
+        "S": 33000,
+        "M": 42000,
+        "L": 54000
+      },
+      "id": 3
+    },
+    {
+      "_id": "8670904c-cbdf-4c34-8c08-086424d89a91",
+      "code": "Capuchino",
+      "name": "CAPCF",
+      "sizePrices": {
+        "S": 33000,
+        "M": 42000,
+        "L": 54000
+      },
+      "id": 4
+    },
+    {
+      "_id": "8670904c-cbdf-4c34-8c08-086424d89a91",
+      "code": "Capuchino",
+      "name": "CAPCF",
+      "sizePrices": {
+        "S": 33000,
+        "M": 42000,
+        "L": 54000
+      },
+      "id": 5
+    },
+    {
+      "_id": "8670904c-cbdf-4c34-8c08-086424d89a91",
+      "code": "Capuchino",
+      "name": "CAPCF",
+      "sizePrices": {
+        "S": 33000,
+        "M": 42000,
+        "L": 54000
+      },
+      "id": 6
+    },
+    {
+      "_id": "8670904c-cbdf-4c34-8c08-086424d89a91",
+      "code": "Capuchino",
+      "name": "CAPCF",
+      "sizePrices": {
+        "S": 33000,
+        "M": 42000,
+        "L": 54000
+      },
+      "id": 7
+    },
+    {
+      "_id": "84583c48-071c-4b74-af1a-3e74765e4793",
+      "code": "Capuchino",
+      "name": "CAPCF",
+      "sizePrices": {
+        "S": 33000,
+        "M": 42000,
+        "L": 54000
+      },
+      "id": 8
+    },
+    {
+      "_id": "84583c48-071c-4b74-af1a-3e74765e4793",
+      "code": "Capuchino",
+      "name": "CAPCF",
+      "sizePrices": {
+        "S": 33000,
+        "M": 42000,
+        "L": 54000
+      },
+      "id": 9
+    },
+    {
+      "_id": "84583c48-071c-4b74-af1a-3e74765e4793",
+      "code": "Capuchino",
+      "name": "CAPCF",
+      "sizePrices": {
+        "S": 33000,
+        "M": 42000,
+        "L": 54000
+      },
+      "id": 10
+    },
+    {
+      "_id": "f449508e-0902-4aa3-a5b5-90a4ea433f8f",
+      "code": "Capuchino",
+      "name": "CAPCF",
+      "sizePrices": {
+        "S": 33000,
+        "M": 42000,
+        "L": 54000
+      },
+      "id": 11
+    },
+    {
+      "_id": "c0a9ace1-6bda-4352-9d58-21a7d9e3f66f",
+      "code": "Capuchino",
+      "name": "CAPCF",
+      "sizePrices": {
+        "S": 33000,
+        "M": 42000,
+        "L": 54000
+      },
+      "id": 12
+    },
+    {
+      "_id": "c0a9ace1-6bda-4352-9d58-21a7d9e3f66f",
+      "code": "Capuchino",
+      "name": "CAPCF",
+      "sizePrices": {
+        "S": 33000,
+        "M": 42000,
+        "L": 54000
+      },
+      "id": 13
+    }
+  ]
 }

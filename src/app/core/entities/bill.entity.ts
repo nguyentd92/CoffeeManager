@@ -17,4 +17,5 @@ export class BillEntity {
   customer: UserInfo;
   counter: UserInfo;
   billDate: Date;
+  isNotSynced: boolean
 }
