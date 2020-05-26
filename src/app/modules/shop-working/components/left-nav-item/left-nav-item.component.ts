@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-left-nav-item',
 
   styleUrls: ['./left-nav-item.component.sass'],
   template: `
-    <div class="wrapper" [ngClass]="{'active': isActive}">
+    <div class="wrapper" (click)="goTo()" [ngClass]="{ active: isActive }">
       <img src="/assets/images/booth.svg" />
     </div>
   `,
@@ -13,4 +14,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LeftNavItemComponent {
   @Input() imgUrl: string;
   @Input() isActive: false;
+  @Input() path: string;
+
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  goTo() {
+    this.router.navigate([this.path], { relativeTo: this.route });
+  }
 }

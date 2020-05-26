@@ -27,6 +27,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzMenuModule, NzDropDownModule, NzModalModule } from 'ng-zorro-antd';
 import { MomentModule } from 'ngx-moment';
+import { ShopWorkingComponent } from './shop-working.component';
+import { ShopGroupTableComponent } from './components/shop-group-table/shop-group-table.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { MomentModule } from 'ngx-moment';
     OrderItemComponent,
     LeftNavItemComponent,
     TodayLogsContainerComponent,
+    ShopWorkingComponent,
+    ShopGroupTableComponent
   ],
   imports: [
     CommonModule,

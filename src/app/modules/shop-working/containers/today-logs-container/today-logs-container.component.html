@@ -1,1 +1,37 @@
-<p>today-logs-container works!</p>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Mã hoá đơn</th>
+                <th>Thời gian</th>
+                <th>Khách hàng</th>
+                <th>Thu ngân</th>
+                <th>Thanh toán</th>
+                <th>Loại TT</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr (click)="onClick(bill)" nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu"
+                (contextmenu)="onRightClick(bill, $event)" [ngClass]="{ 'not-sync': bill.isNotSynced }"
+                *ngFor="let bill of bills$ | async">
+                <td>{{ bill?._id }}</td>
+                <td>{{ bill?.billDate | amDateFormat: 'hh:mm' }}</td>
+                <td>{{ bill?.customer?.name }}</td>
+                <td>{{ bill?.counter?.name }}</td>
+                <td>{{ bill?.total | currency: 'VND' }}</td>
+                <td>cash</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu>
+        <li nz-menu-item><i nz-icon nzType="printer" nzTheme="outline"></i>In hoá đơn</li>
+        <li nz-menu-divider></li>
+        <li nz-menu-item><i nz-icon nzType="edit" nzTheme="outline"></i>Sửa hoá đơn</li>
+        <li nz-menu-item (click)="showConfirm()"><i nz-icon nzType="delete" nzTheme="outline"></i>Xoá hoá đơn
+        </li>
+    </ul>
+</nz-dropdown-menu>

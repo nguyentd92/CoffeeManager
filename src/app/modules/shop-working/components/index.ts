@@ -4,3 +4,5 @@ export * from './table-item/table-item.component';
 export * from './order-calculator/order-calculator.component';
 export * from './left-nav-item/left-nav-item.component';
 export * from './order-item/order-item.component';
+export * from './upsert-bill/upsert-bill.component';
+export * from './shop-group-table/shop-group-table.component';
