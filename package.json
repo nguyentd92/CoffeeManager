@@ -21,6 +21,7 @@
     "@angular/router": "~9.1.6",
     "@angular/service-worker": "~9.1.6",
     "@fortawesome/fontawesome-free": "^5.13.0",
+    "@ngrx/data": "^9.1.2",
     "@ngrx/effects": "^9.1.2",
     "@ngrx/entity": "^9.1.2",
     "@ngrx/store": "^9.1.2",

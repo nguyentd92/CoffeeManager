@@ -21,6 +21,8 @@ import { reducers, CoreModule } from './core';
 import { AppLocalDbModule } from './app-local-db.module';
 import { MomentModule } from 'ngx-moment';
 import 'moment/locale/vi';
+import { EntityDataModule, DefaultDataServiceConfig } from '@ngrx/data';
+import { entityConfig, defaultDataServiceConfig } from './core/store/entity-metadata';
 
 registerLocaleData(vi);
 
@@ -53,6 +55,7 @@ const devModules = environment.production
       enabled: environment.production,
     }),
     ...devModules,
+    EntityDataModule.forRoot(entityConfig),
   ],
   providers: [
     { provide: NZ_I18N, useValue: vi_VN },
@@ -62,6 +65,10 @@ const devModules = environment.production
       useClass: HttpsInterceptor,
       multi: true,
     },
+    {
+      provide: DefaultDataServiceConfig,
+      useValue: defaultDataServiceConfig
+    }
   ],
   bootstrap: [AppComponent],
 })

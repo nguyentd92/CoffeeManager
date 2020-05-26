@@ -7,6 +7,7 @@ import { appStateReducer } from './app-state';
 export * from './drink';
 export * from './app-state';
 export * from './bill';
+export * from './entity-metadata'
 
 interface State {
   appState: AppState;
