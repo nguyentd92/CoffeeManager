@@ -12,14 +12,13 @@ import vi from '@angular/common/locales/vi';
 import { MainLayoutModule } from './share/main-layout/main-layout.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { IconsProviderModule } from './share';
+import { IconsProviderModule, NgZorroAntdModule } from './share';
 import { HttpsInterceptor } from './core/utils/https.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, CoreModule } from './core';
 import { AppLocalDbModule } from './app-local-db.module';
-import { NzNotificationModule } from 'ng-zorro-antd';
 import { MomentModule } from 'ngx-moment';
 import 'moment/locale/vi';
 
@@ -48,7 +47,7 @@ const devModules = environment.production
     AppLocalDbModule,
     StoreModule.forRoot(reducers, {}),
     CoreModule,
-    NzNotificationModule,
+    NgZorroAntdModule,
     MomentModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

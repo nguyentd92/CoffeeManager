@@ -3,6 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { BillState, BillEntity } from 'src/app/core';
 import * as fromBillStore from 'src/app/core/store/bill';
 import { NzModalService } from 'ng-zorro-antd';
+import { ShopWorkingService } from '../../services/shop-working.service';
 
 @Component({
   selector: 'app-today-logs-container',
@@ -10,14 +11,14 @@ import { NzModalService } from 'ng-zorro-antd';
   styleUrls: ['./today-logs-container.component.sass'],
 })
 export class TodayLogsContainerComponent implements OnInit {
-  
   currentBill: BillEntity = null;
 
-  @ViewChild('menu', {static: false}) menu
+  @ViewChild('menu', { static: false }) menu;
 
   constructor(
     private billStore: Store<BillState>,
-    private modal: NzModalService
+    private modal: NzModalService,
+    private shopWorkingService: ShopWorkingService
   ) {}
 
   get bills$() {
@@ -26,13 +27,14 @@ export class TodayLogsContainerComponent implements OnInit {
 
   ngOnInit() {
     this.billStore.dispatch(fromBillStore.getBillsOffline());
+    
   }
 
   onClick(bill: BillEntity) {
-    this.currentBill = bill    
+    this.currentBill = bill;
   }
 
-  showConfirm(): void {
+  showDeleteConfirm(): void {
     this.modal.confirm({
       nzTitle: 'Bạn có chắc chắn muốn xoá?',
       nzContent: `Xoá hoá đơn số ${this.currentBill._id}, được tạo vào lúc ${this.currentBill.startTime}`,
@@ -43,9 +45,13 @@ export class TodayLogsContainerComponent implements OnInit {
     });
   }
 
+  showEditModal() {
+    this.shopWorkingService.openEditModal(this.currentBill);
+  }
+
   onRightClick(bill, event) {
     event.preventDefault();
 
-    event.target.click(bill)
+    event.target.click(bill);
   }
 }

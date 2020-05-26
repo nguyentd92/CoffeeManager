@@ -4,6 +4,7 @@ import {
   ShopWorkingContainerComponent,
   MenuOrderContainerComponent,
   TodayLogsContainerComponent,
+  ShopViewContainerComponent,
 } from './containers';
 import { ShopWorkingComponent } from './shop-working.component';
 
@@ -17,6 +18,10 @@ const routes: Routes = [
         component: ShopWorkingContainerComponent,
       },
       {
+        path: 'shop-view',
+        component: ShopViewContainerComponent
+      },
+      {
         path: 'order',
         component: MenuOrderContainerComponent,
       },
@@ -24,7 +29,7 @@ const routes: Routes = [
         path: 'today-logs',
         component: TodayLogsContainerComponent,
       },
-    ],
+    ],  
   },
 ];
 

@@ -1,64 +1,34 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
-import { NzButtonModule } from 'ng-zorro-antd/button';
-import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { ShopWorkingRoutingModule } from './shop-working-routing.module';
 
-import {
-  TableItemComponent,
-  FoodItemComponent,
-  OrderCalculatorComponent,
-  LeftNavItemComponent,
-  FoodNoteGearComponent,
-  OrderItemComponent,
-} from './components';
+import { shopWorkingComponents } from './components';
 
 import {
-  ShopWorkingContainerComponent,
-  TodayLogsContainerComponent,
-  MenuOrderContainerComponent,
+  shopWorkingContainer,
 } from './containers';
-import { NzInputModule } from 'ng-zorro-antd/input';
-import { NzIconModule } from 'ng-zorro-antd/icon';
-import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
-import { NzSelectModule } from 'ng-zorro-antd/select';
-import { NzTagModule } from 'ng-zorro-antd/tag';
-import { NzMenuModule, NzDropDownModule, NzModalModule } from 'ng-zorro-antd';
 import { MomentModule } from 'ngx-moment';
+import { ShopWorkingService } from './services/shop-working.service';
+import { NgZorroAntdModule } from 'src/app/share';
+import { RouterModule } from '@angular/router';
 import { ShopWorkingComponent } from './shop-working.component';
-import { ShopGroupTableComponent } from './components/shop-group-table/shop-group-table.component';
 
 @NgModule({
   declarations: [
-    ShopWorkingContainerComponent,
-    TableItemComponent,
-    MenuOrderContainerComponent,
-    FoodItemComponent,
-    OrderCalculatorComponent,
-    FoodNoteGearComponent,
-    OrderItemComponent,
-    LeftNavItemComponent,
-    TodayLogsContainerComponent,
     ShopWorkingComponent,
-    ShopGroupTableComponent
+    ...shopWorkingContainer,
+    ...shopWorkingComponents,
   ],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     ShopWorkingRoutingModule,
-    NzButtonModule,
-    NzInputNumberModule,
-    NzInputModule,
-    NzIconModule,
-    NzCheckboxModule,
-    NzSelectModule,
-    NzTagModule,
-    NzMenuModule,
-    NzDropDownModule,
-    NzModalModule,
+    RouterModule,
     MomentModule,
+    NgZorroAntdModule,
   ],
+  providers: [ShopWorkingService],
 })
 export class ShopWorkingModule {}
