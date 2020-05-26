@@ -25,6 +25,15 @@ import 'moment/locale/vi';
 
 registerLocaleData(vi);
 
+const devModules = environment.production
+  ? []
+  : [
+      StoreDevtoolsModule.instrument({
+        maxAge: 25,
+        logOnly: environment.production,
+      }),
+    ];
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -34,19 +43,17 @@ registerLocaleData(vi);
     BrowserAnimationsModule,
     IconsProviderModule,
     MainLayoutModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-    }),
+
     HttpClientModule,
     AppLocalDbModule,
     StoreModule.forRoot(reducers, {}),
     CoreModule,
     NzNotificationModule,
     MomentModule.forRoot(),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
     }),
+    ...devModules,
   ],
   providers: [
     { provide: NZ_I18N, useValue: vi_VN },

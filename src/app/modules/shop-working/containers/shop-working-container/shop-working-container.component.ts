@@ -3,6 +3,7 @@ import { BillState, BillEntity } from 'src/app/core';
 import { Store, select } from '@ngrx/store';
 import * as fromBillStore from 'src/app/core/store/bill';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd';
+import { shopWorkingRouter } from '../../common/shop-working-router'
 
 const testBill: BillEntity = {
   phone: '0935418749',
@@ -31,6 +32,7 @@ const testBill: BillEntity = {
   styleUrls: ['./shop-working-container.component.sass'],
 })
 export class ShopWorkingContainerComponent implements OnInit {
+  routes = shopWorkingRouter
   showMenu = true;
   menuX = 0;
   menuY = 0;

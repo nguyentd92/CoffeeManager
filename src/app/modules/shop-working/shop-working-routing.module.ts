@@ -3,16 +3,21 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   ShopWorkingContainerComponent,
   MenuOrderContainerComponent,
+  TodayLogsContainerComponent,
 } from './containers';
 
 const routes: Routes = [
   {
-    path: 'order',
-    component: MenuOrderContainerComponent,
-  },  
-  {
     path: '',
     component: ShopWorkingContainerComponent,
+  },
+  {
+    path: 'order',
+    component: MenuOrderContainerComponent,
+  },
+  {
+    path: 'today-logs',
+    component: TodayLogsContainerComponent,
   },
 ];
 

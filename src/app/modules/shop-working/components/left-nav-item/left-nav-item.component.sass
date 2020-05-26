@@ -1,0 +1,28 @@
+@import '_colors'
+
+$borderRadius: 6px
+
+:host
+    display: block
+    padding-left: 8px
+    margin: 4px 0
+
+.wrapper
+    padding: 8px
+    width: 100%
+    border-top-left-radius: $borderRadius
+    border-bottom-left-radius: $borderRadius
+    transition: .1s ease-in-out
+    cursor: pointer
+    user-select: none
+
+    &.active
+        background-color: $accent
+
+    &:hover
+        background-color: $light
+
+    img
+        width: 40px
+        height: 40px
+        user-select: none !important

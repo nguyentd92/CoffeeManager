@@ -3,6 +3,7 @@ import { ConnectionService } from 'ng-connection-service';
 import { Store } from '@ngrx/store';
 import { AppState } from './core';
 import * as fromStore from './core/store';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ import * as fromStore from './core/store';
 })
 export class AppComponent {
   title = 'Coffee';
+  env = environment.production
 
   constructor(
     private connectionService: ConnectionService,

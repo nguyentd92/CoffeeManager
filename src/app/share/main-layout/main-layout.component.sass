@@ -1,20 +1,21 @@
 @import '_colors'
 @import '_sizes'
 
+$headerFooterBg: rgba(#f2f2f2, .85 )
+
 header, footer
     height: 1.6rem
     align-items: center
 
 main
     transform: translateY($headerFooterHeight)
-    height: $mainContentHeight
-    background-color: $medium
+    height: $mainContentHeight    
 
 header
     width: 100vw
     position: fixed
     top: 0
-    background-color: $light
+    background-color: $headerFooterBg
     padding: 0 1rem
     display: flex
     justify-content: space-between
@@ -43,7 +44,7 @@ footer
     width: 100vw
     position: fixed
     bottom: 0
-    background-color: $light
+    background-color: $headerFooterBg
     display: flex
     justify-content: space-between
     padding: 0 1rem
