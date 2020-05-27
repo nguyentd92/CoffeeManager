@@ -1,7 +1,7 @@
 <div class="vertical-nav">
     <ul>
-        <li *ngFor="let item of routes">
-            <app-left-nav-item [imgUrl]="item?.imgUrl" [path]="item.path" isActive=true></app-left-nav-item>
+        <li *ngFor="let routeInfo of showRoutes">
+            <app-left-nav-item [routeInfo]="routeInfo"></app-left-nav-item>
         </li>
     </ul>
 </div>

@@ -54,4 +54,8 @@ export class TodayLogsContainerComponent implements OnInit {
 
     event.target.click(bill);
   }
+
+  showBillViewModal() {
+    this.shopWorkingService.openBillViewModal(this.currentBill)
+  }
 }

@@ -25,5 +25,17 @@
         ]
       }
     }
+  ],
+    "dataGroups": [
+    {
+      "name": "drink",
+      "urls": ["https://crudcrud.com/api/c0b9b3ada41346c7ae82568f87f8dd99/todos"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 20,
+        "maxAge": "1h",
+        "timeout": "5s"
+      }
+    }
   ]
 }

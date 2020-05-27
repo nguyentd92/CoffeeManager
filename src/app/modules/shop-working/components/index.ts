@@ -6,6 +6,7 @@ import { FoodNoteGearComponent } from './food-note-gear/food-note-gear.component
 import { OrderItemComponent } from './order-item/order-item.component';
 import { UpsertBillComponent } from './upsert-bill/upsert-bill.component';
 import { ShopGroupTableComponent } from './shop-group-table/shop-group-table.component';
+import { BillViewComponent } from './bill-view/bill-view.component';
 
 export * from './food-item/food-item.component';
 export * from './food-note-gear/food-note-gear.component';
@@ -15,6 +16,7 @@ export * from './left-nav-item/left-nav-item.component';
 export * from './order-item/order-item.component';
 export * from './upsert-bill/upsert-bill.component';
 export * from './shop-group-table/shop-group-table.component';
+export * from './bill-view/bill-view.component'
 
 export const shopWorkingComponents = [
   TableItemComponent,
@@ -24,5 +26,6 @@ export const shopWorkingComponents = [
   FoodNoteGearComponent,
   OrderItemComponent,
   UpsertBillComponent,
-  ShopGroupTableComponent
+  ShopGroupTableComponent,
+  BillViewComponent
 ];
